@@ -1,0 +1,22 @@
+[
+  {
+    "company": "Yuusoft",
+    "role": "SDE Intern",
+    "period": "Jul 2025 – Aug 2025",
+    "location": "Remote, Singapore",
+    "description": [
+      "Built an internal Discord bot that integrates with Claude to edit code and push commits directly to Git repositories using natural language commands.",
+      "Worked on Yuusoft’s visual novel creator platform, building several core pages and features from scratch, including input data flows, UI components, and scene management tools."
+    ]
+  },
+  {
+    "company": "AboutCode",
+    "role": "Google Summer of Code 2025",
+    "period": "May 2025 – Sep 2025",
+    "location": "Remote, United States",
+    "description": [
+      "Developed a file-system tree view for ScanCode.io to enable intuitive browsing of scanned codebases, using HTMX for dynamic UI updates and Django for backend APIs.",
+      "Designed and implemented efficient APIs with lazy loading, path-based querying, and caching to handle large nested directories with optimal performance."
+    ]
+  }
+]

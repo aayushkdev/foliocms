@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "title": "Crate",
+    "category": "Systems & Infrastructure",
+    "description": "A container runtime written in Go exploring namespaces, rootless containers, filesystem isolation, and OCI image handling.",
+    "githubLink": "https://github.com/aayushkdev/crate"
+  },
+  {
+    "id": 2,
+    "title": "nmsurf",
+    "category": "Systems & Infrastructure",
+    "description": "A minimal NetworkManager frontend in Go for launcher-based environments like Wofi and Rofi, enabling fast Wi-Fi management.",
+    "githubLink": "https://github.com/aayushkdev/nmsurf"
+  },
+  {
+    "id": 3,
+    "title": "Torrcli",
+    "category": "Developer Tools",
+    "description": "A terminal-based BitTorrent client offering torrent management, searching, streaming, and downloading via an intuitive CLI.",
+    "githubLink": "https://github.com/aayushkdev/torrcli"
+  },
+  {
+    "id": 4,
+    "title": "Disco-AI",
+    "category": "Developer Tools",
+    "description": "An AI-powered Discord bot with chat features, automation tools, polls, summaries, and reminder management.",
+    "githubLink": "https://github.com/aayushkdev/disco-ai"
+  },
+  {
+    "id": 5,
+    "title": "Kargo",
+    "category": "Web & Applications",
+    "description": "An open-source PaaS built on Kubernetes allowing users to deploy Docker images with a simplified Heroku-like experience.",
+    "githubLink": "https://github.com/GDGVIT/kargo-backend",
+    "demoLink": "https://kargo.dscvit.com"
+  },
+  {
+    "id": 6,
+    "title": "PastezBin",
+    "category": "Web & Applications",
+    "description": "A browser-based paste tool that compresses text and images directly into URLs using Deflate and base64 encoding.",
+    "githubLink": "https://github.com/aayushkdev/pastezbin"
+  },
+  {
+    "id": 7,
+    "title": "Vellorun",
+    "category": "Web & Applications",
+    "description": "A gamified exploration app with AI-driven suggestions, XP progression, and interactive map-based discovery.",
+    "githubLink": "https://github.com/aayushkdev/vellorun-backend"
+  },
+  {
+    "id": 8,
+    "title": "Elecshion",
+    "category": "Web & Applications",
+    "description": "A desktop voting system built with Python for managing school elections with CSV imports and graphical result visualization.",
+    "githubLink": "https://github.com/aayushkdev/E-voting-Software"
+  },
+  {
+    "id": 9,
+    "title": "2D Car Racer",
+    "category": "Creative & Interactive",
+    "description": "A 2D racing game built with Python and Pygame featuring obstacle generation and real-time scoring.",
+    "githubLink": "https://github.com/aayushkdev/2d-car-racer"
+  },
+  {
+    "id": 10,
+    "title": "Lofi",
+    "category": "Creative & Interactive",
+    "description": "A minimal lofi music listening website built with React, featuring animated backgrounds and keyboard-driven controls.",
+    "githubLink": "https://github.com/aayushkdev/lofi"
+  }
+]
