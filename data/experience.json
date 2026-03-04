@@ -4,6 +4,7 @@
     "role": "SDE Intern",
     "period": "Jul 2025 – Aug 2025",
     "location": "Remote, Singapore",
+    "current": true,
     "description": [
       "Built an internal Discord bot that integrates with Claude to edit code and push commits directly to Git repositories using natural language commands.",
       "Worked on Yuusoft’s visual novel creator platform, building several core pages and features from scratch, including input data flows, UI components, and scene management tools."

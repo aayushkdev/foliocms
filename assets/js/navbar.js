@@ -1,53 +1,58 @@
-document.addEventListener("DOMContentLoaded", () => {
-  highlightCurrentPage();
+// ===============================
+// Navbar Functionality
+// ===============================
 
-  // Only run scroll highlighting on index page
-  if (window.location.pathname.endsWith("index.html") || 
-      window.location.pathname === "/" || 
-      window.location.pathname === "") {
-    highlightOnScroll();
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbar();
+  highlightOnScroll();
 });
 
-function highlightCurrentPage() {
-  const links = document.querySelectorAll(".nav-link");
-  const currentPath = window.location.pathname.split("/").pop();
+function initNavbar() {
+  const navbar = document.querySelector('.navbar');
+  let lastScrollTop = 0;
+  let scrollThreshold = 100;
 
-  links.forEach(link => {
-    const href = link.getAttribute("href");
-
-    // Highlight page links
-    if (href === currentPath) {
-      link.classList.add("active");
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Add scrolled class for styling
+    if (scrollTop > scrollThreshold) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
     }
-
-    // Default home highlight if on index
-    if ((currentPath === "" || currentPath === "index.html") && href === "#top") {
-      link.classList.add("active");
-    }
+    
+    lastScrollTop = scrollTop;
   });
 }
 
 function highlightOnScroll() {
-  const sectionLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
 
-  window.addEventListener("scroll", () => {
-    let currentSection = "";
+  if (sections.length === 0 || navLinks.length === 0) return;
+
+  window.addEventListener('scroll', () => {
+    let currentSection = '';
+    const scrollPos = window.scrollY + 150; // Offset for navbar height
 
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (window.scrollY >= sectionTop) {
-        currentSection = section.getAttribute("id");
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        currentSection = sectionId;
       }
     });
 
-    sectionLinks.forEach(link => {
-      const target = link.getAttribute("href").substring(1);
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      const targetId = href.substring(1);
 
-      if (target === currentSection) {
-        sectionLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
+      if (targetId === currentSection) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       }
     });
   });

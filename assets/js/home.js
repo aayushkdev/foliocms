@@ -1,61 +1,84 @@
-document.addEventListener("DOMContentLoaded", () => {
-  loadExperience();
-  loadProjects();
-});
+// ===============================
+// Hero Animation
+// ===============================
 
-let allProjects = [];
-let showingAll = false;
+document.addEventListener("DOMContentLoaded", init);
 
-async function loadExperience() {
-  const data = await fetchData("experience.json");
-  const container = document.getElementById("experienceContainer");
-  if (!container) return;
+function init() {
+  animateHero();
+  setupSmoothScroll();
+  setupScrollReveal();
+}
 
-  container.innerHTML = "";
-
-  data.forEach(exp => {
-    container.innerHTML += `
-      <div class="card">
-        <h3>${exp.role}</h3>
-        <p class="muted">${exp.company} • ${exp.period}</p>
-        <p class="muted">${exp.location}</p>
-        <ul>
-          ${exp.description.map(item => `<li>${item}</li>`).join("")}
-        </ul>
-      </div>
-    `;
+function animateHero() {
+  const heroElements = document.querySelectorAll('.hero .fade-in');
+  
+  heroElements.forEach((el, index) => {
+    el.style.animationDelay = `${(index + 1) * 0.1}s`;
   });
 }
 
-async function loadProjects() {
-  allProjects = await fetchData("projects.json");
-  renderProjects(3);
-
-  const viewMoreBtn = document.getElementById("viewMoreBtn");
-  viewMoreBtn.addEventListener("click", () => {
-    showingAll = true;
-    renderProjects(allProjects.length);
-    viewMoreBtn.style.display = "none";
+function setupSmoothScroll() {
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#' || href === '#!') return;
+      
+      e.preventDefault();
+      const target = document.querySelector(href);
+      
+      if (target) {
+        const navHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = target.offsetTop - navHeight - 20;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 }
 
-function renderProjects(count) {
-  const container = document.getElementById("projectsContainer");
-  if (!container) return;
-
-  container.innerHTML = "";
-
-  allProjects.slice(0, count).forEach(project => {
-    container.innerHTML += `
-      <div class="card project-card">
-        <h3>${project.title}</h3>
-        <p class="muted">${project.category}</p>
-        <p>${project.description}</p>
-        <div class="project-links">
-          <a href="${project.githubLink}" target="_blank" class="link">GitHub</a>
-          ${project.demoLink ? `<a href="${project.demoLink}" target="_blank" class="link">Demo</a>` : ""}
-        </div>
-      </div>
-    `;
+function setupScrollReveal() {
+  // Add scroll reveal animation for sections
+  const observerOptions = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all sections
+  document.querySelectorAll('.section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
   });
+}
+
+
+// ===============================
+// Utility: Fetch Data
+// ===============================
+
+async function fetchData(filename) {
+  try {
+    const response = await fetch(`data/${filename}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`Failed to fetch ${filename}:`, error);
+    return [];
+  }
 }
