@@ -1,6 +1,53 @@
 [
+
   {
     "id": 1,
+    "title": "Torrcli",
+    "category": "Developer Tools",
+    "description": "A terminal-based BitTorrent client offering torrent management, searching, streaming, and downloading via an intuitive CLI.",
+    "githubLink": "https://github.com/aayushkdev/torrcli",
+    "tech": ["Python", "libtorrent", "Rich"],
+    "image": "torrcli.png"
+  },
+  {
+    "id": 2,
+    "title": "Kargo",
+    "category": "Web & Applications",
+    "description": "An open-source PaaS built on Kubernetes allowing users to deploy Docker images with a simplified Heroku-like experience.",
+    "githubLink": "https://github.com/GDGVIT/kargo-backend",
+    "demoLink": "https://kargo.dscvit.com",
+    "tech": ["Next.js", "Kubernetes", "Docker"],
+    "image": "kargo.png"
+  },
+  {
+    "id": 3,
+    "title": "Lofi",
+    "category": "Creative & Interactive",
+    "description": "A minimal lofi music listening website built with React, featuring animated backgrounds and keyboard-driven controls.",
+    "githubLink": "https://github.com/aayushkdev/lofi",
+    "tech": ["React", "TailwindCSS"],
+    "image": "lofi.png"
+  },
+  {
+    "id": 4,
+    "title": "PastezBin",
+    "category": "Web & Applications",
+    "description": "A browser-based paste tool that compresses text and images directly into URLs using Deflate and base64 encoding.",
+    "githubLink": "https://github.com/aayushkdev/pastezbin",
+    "tech": ["HTML", "CSS/JS", "DEFLATE"],
+    "image": "pastez.png"
+  },
+  {
+    "id": 5,
+    "title": "2D Car Racer",
+    "category": "Creative & Interactive",
+    "description": "A 2D racing game built with Python and Pygame featuring obstacle generation and real-time scoring.",
+    "githubLink": "https://github.com/aayushkdev/2d-car-racer",
+    "tech": ["Python", "Pygame", "SDL"],
+    "image": "racer.png"
+  },
+  {
+    "id": 6,
     "title": "Crate",
     "category": "Systems & Infrastructure",
     "description": "A container runtime written in Go exploring namespaces, rootless containers, filesystem isolation, and OCI image handling.",
@@ -8,7 +55,7 @@
     "tech": ["Go", "Namespaces", "cgroups"]
   },
   {
-    "id": 2,
+    "id": 7,
     "title": "nmsurf",
     "category": "Systems & Infrastructure",
     "description": "A minimal NetworkManager frontend in Go for launcher-based environments like Wofi and Rofi, enabling fast Wi-Fi management.",
@@ -16,15 +63,7 @@
     "tech": ["Go", "NetworkManager", "Wofi"]
   },
   {
-    "id": 3,
-    "title": "Torrcli",
-    "category": "Developer Tools",
-    "description": "A terminal-based BitTorrent client offering torrent management, searching, streaming, and downloading via an intuitive CLI.",
-    "githubLink": "https://github.com/aayushkdev/torrcli",
-    "tech": ["Python", "libtorrent", "Rich"]
-  },
-  {
-    "id": 4,
+    "id": 8,
     "title": "Disco-AI",
     "category": "Developer Tools",
     "description": "An AI-powered Discord bot with chat features, automation tools, polls, summaries, and reminder management.",
@@ -32,24 +71,7 @@
     "tech": ["Python", "discord.py", "PostgreSQL"]
   },
   {
-    "id": 5,
-    "title": "Kargo",
-    "category": "Web & Applications",
-    "description": "An open-source PaaS built on Kubernetes allowing users to deploy Docker images with a simplified Heroku-like experience.",
-    "githubLink": "https://github.com/GDGVIT/kargo-backend",
-    "demoLink": "https://kargo.dscvit.com",
-    "tech": ["Next.js", "Kubernetes", "Docker"]
-  },
-  {
-    "id": 6,
-    "title": "PastezBin",
-    "category": "Web & Applications",
-    "description": "A browser-based paste tool that compresses text and images directly into URLs using Deflate and base64 encoding.",
-    "githubLink": "https://github.com/aayushkdev/pastezbin",
-    "tech": ["HTML", "CSS/JS", "DEFLATE"]
-  },
-  {
-    "id": 7,
+    "id": 9,
     "title": "Vellorun",
     "category": "Web & Applications",
     "description": "A gamified exploration app with AI-driven suggestions, XP progression, and interactive map-based discovery.",
@@ -57,27 +79,11 @@
     "tech": ["Go", "PostgreSQL", "Gen AI"]
   },
   {
-    "id": 8,
+    "id": 10,
     "title": "Elecshion",
     "category": "Web & Applications",
     "description": "A desktop voting system built with Python for managing school elections with CSV imports and graphical result visualization.",
     "githubLink": "https://github.com/aayushkdev/E-voting-Software",
     "tech": ["Python", "Tkinter", "CSV"]
-  },
-  {
-    "id": 9,
-    "title": "2D Car Racer",
-    "category": "Creative & Interactive",
-    "description": "A 2D racing game built with Python and Pygame featuring obstacle generation and real-time scoring.",
-    "githubLink": "https://github.com/aayushkdev/2d-car-racer",
-    "tech": ["Python", "Pygame", "SDL"]
-  },
-  {
-    "id": 10,
-    "title": "Lofi",
-    "category": "Creative & Interactive",
-    "description": "A minimal lofi music listening website built with React, featuring animated backgrounds and keyboard-driven controls.",
-    "githubLink": "https://github.com/aayushkdev/lofi",
-    "tech": ["React", "TailwindCSS"]
   }
 ]
