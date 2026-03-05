@@ -36,24 +36,51 @@ function renderProjects(projects) {
 
     const hasDemo = project.demoLink && project.demoLink.trim() !== '';
     const hasGithub = project.githubLink && project.githubLink.trim() !== '';
+    const primaryLink = hasDemo ? project.demoLink : project.githubLink;
+
+    // Make the card clickable
+    if (primaryLink) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // Don't navigate if clicking on a link
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+          return;
+        }
+        window.open(primaryLink, '_blank', 'noopener noreferrer');
+      });
+    }
+
+    const techListHTML = project.tech && project.tech.length > 0 
+      ? `<ul class="project-tech-list">
+          ${project.tech.map(tech => `<li>${escapeHtml(tech)}</li>`).join('')}
+         </ul>`
+      : '';
 
     card.innerHTML = `
-      <div class="project-card-top">
-        <div class="project-folder">
-          <img src="assets/images/folder.svg" alt="Folder">
-        </div>
-        <div class="project-links">
-          ${hasGithub ? `<a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" aria-label="GitHub Link">
-            <img src="assets/images/github.svg" alt="GitHub">
-          </a>` : ''}
-          ${hasDemo ? `<a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" aria-label="External Link" class="external">
-            <img src="assets/images/external.svg" alt="External Link">
-          </a>` : ''}
-        </div>
+      <div class="project-inner">
+        <header>
+          <div class="project-card-top">
+            <div class="project-folder">
+              <img src="assets/images/folder.svg" alt="Folder">
+            </div>
+            <div class="project-links">
+              ${hasGithub ? `<a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" aria-label="GitHub Link">
+                <img src="assets/images/github.svg" alt="GitHub">
+              </a>` : ''}
+              ${hasDemo ? `<a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" aria-label="External Link" class="external">
+                <img src="assets/images/external.svg" alt="External Link">
+              </a>` : ''}
+            </div>
+          </div>
+          <h3 class="project-title">
+            ${primaryLink ? `<a href="${primaryLink}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.title)}</a>` : escapeHtml(project.title)}
+          </h3>
+          <p class="project-description">${escapeHtml(project.description)}</p>
+        </header>
+        <footer>
+          ${techListHTML}
+        </footer>
       </div>
-      <h3 class="project-title">${escapeHtml(project.title)}</h3>
-      ${project.category ? `<div class="project-category">${escapeHtml(project.category)}</div>` : ''}
-      <p class="project-description">${escapeHtml(project.description)}</p>
     `;
 
     container.appendChild(card);
