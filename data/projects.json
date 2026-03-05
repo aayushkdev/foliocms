@@ -25,6 +25,7 @@
     "category": "Creative & Interactive",
     "description": "A minimal lofi music listening website built with React, featuring animated backgrounds and keyboard-driven controls.",
     "githubLink": "https://github.com/aayushkdev/lofi",
+    "demoLink": "https://lofi.aayushk.dev",
     "tech": ["React", "TailwindCSS"],
     "image": "lofi.png"
   },
@@ -34,6 +35,7 @@
     "category": "Web & Applications",
     "description": "A browser-based paste tool that compresses text and images directly into URLs using Deflate and base64 encoding.",
     "githubLink": "https://github.com/aayushkdev/pastezbin",
+    "demoLink": "https://pastezbin.aayushk.dev",
     "tech": ["HTML", "CSS/JS", "DEFLATE"],
     "image": "pastez.png"
   },

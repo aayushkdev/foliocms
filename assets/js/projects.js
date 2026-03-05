@@ -1,111 +1,117 @@
-// ===============================
-// Projects Section
-// ===============================
+const grid = document.querySelector(".all-projects-grid");
+const filterContainer = document.querySelector(".projects-filter");
 
-document.addEventListener("DOMContentLoaded", initProjects);
+let projects = [];
+let activeFilter = "all";
 
-async function initProjects() {
-  try {
-    const projects = await fetchData("projects.json");
+async function loadProjects() {
+  const res = await fetch("/data/projects.json");
+  projects = await res.json();
 
-    if (!Array.isArray(projects)) {
-      console.error("projects.json is not returning an array");
-      return;
-    }
-
-    renderProjects(projects);
-  } catch (error) {
-    console.error("Error loading projects:", error);
-  }
+  renderFilters();
+  renderProjects();
 }
 
-function renderProjects(projects) {
-  const container = document.querySelector(".projects-grid");
-  if (!container) return;
+function renderFilters() {
+  const categories = [...new Set(projects.map(p => p.category))];
 
-  container.innerHTML = "";
+  categories.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn";
+    btn.dataset.filter = cat;
+    btn.textContent = cat;
 
-  if (projects.length === 0) {
-    container.innerHTML = "<p>No projects found.</p>";
-    return;
-  }
+    btn.onclick = () => {
+      activeFilter = cat;
+      setActiveButton(btn);
+      renderProjects();
+    };
 
-  projects.forEach(project => {
-    const card = document.createElement("div");
-    card.className = "project-card";
+    filterContainer.appendChild(btn);
+  });
 
-    const hasDemo = project.demoLink && project.demoLink.trim() !== '';
-    const hasGithub = project.githubLink && project.githubLink.trim() !== '';
-    const primaryLink = hasDemo ? project.demoLink : project.githubLink;
+  document.querySelector('[data-filter="all"]').onclick = () => {
+    activeFilter = "all";
+    setActiveButton(document.querySelector('[data-filter="all"]'));
+    renderProjects();
+  };
+}
 
-    // Make the card clickable
-    if (primaryLink) {
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', (e) => {
-        // Don't navigate if clicking on a link
-        if (e.target.tagName === 'A' || e.target.closest('a')) {
-          return;
-        }
-        window.open(primaryLink, '_blank', 'noopener noreferrer');
-      });
-    }
+function setActiveButton(btn) {
+  document.querySelectorAll(".filter-btn")
+    .forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
 
-    const techListHTML = project.tech && project.tech.length > 0 
-      ? `<ul class="project-tech-list">
-          ${project.tech.map(tech => `<li>${escapeHtml(tech)}</li>`).join('')}
-         </ul>`
-      : '';
+function renderProjects() {
 
-    card.innerHTML = `
+  grid.innerHTML = "";
+
+  const filtered = activeFilter === "all"
+    ? projects
+    : projects.filter(p => p.category === activeFilter);
+
+  filtered.forEach(project => {
+
+    const tech = project.tech
+      .map(t => `<li>${t}</li>`)
+      .join("");
+
+    const card = `
+    <li class="project-card">
       <div class="project-inner">
+
         <header>
+
           <div class="project-card-top">
+
             <div class="project-folder">
-              <img src="assets/images/folder.svg" alt="Folder">
+              <img src="/assets/images/folder.svg">
             </div>
+
             <div class="project-links">
-              ${hasGithub ? `<a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" aria-label="GitHub Link">
-                <img src="assets/images/github.svg" alt="GitHub">
-              </a>` : ''}
-              ${hasDemo ? `<a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" aria-label="External Link" class="external">
-                <img src="assets/images/external.svg" alt="External Link">
-              </a>` : ''}
+
+              ${project.githubLink ? `
+              <a href="${project.githubLink}" target="_blank">
+                <img src="/assets/images/github.svg">
+              </a>` : ""}
+
+              ${project.demoLink ? `
+              <a href="${project.demoLink}" target="_blank">
+                <img src="/assets/images/external.svg">
+              </a>` : ""}
+
             </div>
+
           </div>
+
           <h3 class="project-title">
-            ${primaryLink ? `<a href="${primaryLink}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.title)}</a>` : escapeHtml(project.title)}
+            ${project.demoLink || project.githubLink ? `
+            <a href="${project.demoLink || project.githubLink}" target="_blank" rel="noopener noreferrer">
+              ${project.title}
+            </a>` : project.title}
           </h3>
-          <p class="project-description">${escapeHtml(project.description)}</p>
+
+          <p class="project-category">${project.category}</p>
+
+          <p class="project-description">
+            ${project.description}
+          </p>
+
         </header>
+
         <footer>
-          ${techListHTML}
+          <ul class="project-tech-list">
+            ${tech}
+          </ul>
         </footer>
+
       </div>
+    </li>
     `;
 
-    container.appendChild(card);
+    grid.innerHTML += card;
   });
 }
 
-function escapeHtml(text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-  return text.replace(/[&<>"']/g, m => map[m]);
-}
-
-// Utility: Fetch Data
-async function fetchData(filename) {
-  try {
-    const response = await fetch(`data/${filename}`);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    return await response.json();
-  } catch (error) {
-    console.error(`Failed to fetch ${filename}:`, error);
-    return [];
-  }
-}
+loadProjects();

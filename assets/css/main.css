@@ -1345,43 +1345,43 @@ body.blur .section {
 }
 
 
-/* PROJECTS ARCHIVE PAGE */
+/* PROJECTS PAGE */
 
-.archive-main {
+.projects-main {
   min-height: 100vh;
   padding: 200px 150px;
 }
 
 @media (max-width: 1080px) {
-  .archive-main {
+  .projects-main {
     padding: 200px 100px;
   }
 }
 
 @media (max-width: 768px) {
-  .archive-main {
+  .projects-main {
     padding: 150px 50px;
   }
 }
 
 @media (max-width: 480px) {
-  .archive-main {
+  .projects-main {
     padding: 125px 25px;
   }
 }
 
-.archive-header {
+.projects-header {
   margin-bottom: 100px;
   text-align: center;
 }
 
 @media (max-width: 768px) {
-  .archive-header {
+  .projects-header {
     margin-bottom: 60px;
   }
 }
 
-.archive-header .big-heading {
+.projects-header .big-heading {
   margin: 0;
   font-size: clamp(40px, 8vw, 80px);
   font-weight: 600;
@@ -1389,7 +1389,7 @@ body.blur .section {
   color: var(--text);
 }
 
-.archive-header .subtitle {
+.projects-header .subtitle {
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: var(--fz-md);
@@ -1397,15 +1397,57 @@ body.blur .section {
   margin-top: 10px;
 }
 
-.archive-container {
+.projects-container {
   max-width: 1600px;
   margin: 0 auto;
 }
 
-.all-projects-grid {
-  margin-top: 50px;
+.projects-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
 }
 
+.filter-btn {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.all-projects-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1000px) {
+  .all-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .all-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* CONTACT SECTION */
 
