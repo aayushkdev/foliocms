@@ -1095,8 +1095,8 @@ body.blur .section {
 }
 
 .social img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   transition: var(--transition);
   filter: invert(55%) sepia(18%) saturate(370%) hue-rotate(162deg) brightness(93%) contrast(87%);
 }
@@ -1179,8 +1179,8 @@ body.blur .section {
     display: none;
   }
 
-  .hero h1, .hero .big-heading {
-    font-size: 50px;
+  .hero .big-heading {
+    font-size: clamp(40px, 10vw, 60px);
   }
 
   .hero h2 {
