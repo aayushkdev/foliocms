@@ -1,5 +1,17 @@
 [
   {
+    "company": "LoopedIn AI",
+    "role": "SDE Intern",
+    "period": "Dec 2025 – Present",
+    "location": "Remote",
+    "current": true,
+    "description": [
+      "Building AI-powered developer and productivity tools using modern LLM APIs, focusing on automation workflows and intelligent task orchestration.",
+      "Designing backend services and scalable APIs to integrate AI models into real-world applications, including prompt pipelines, data processing, and model evaluation.",
+      "Developing product features end-to-end, from frontend interfaces to backend infrastructure, enabling users to automate complex workflows with natural language."
+    ]
+  },
+  {
     "company": "Yuusoft",
     "role": "SDE Intern",
     "period": "Jul 2025 – Aug 2025",

@@ -1,0 +1,128 @@
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--muted);
+  font-size: var(--fz-sm);
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* SIDE ELEMENTS */
+
+.side {
+  position: fixed;
+  bottom: 0;
+  width: 40px;
+  z-index: 10;
+}
+
+.side.left {
+  left: 40px;
+}
+
+.side.right {
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .side,
+  .side.right  {
+    display: none;
+  }
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+
+.social a {
+  padding: 10px;
+  display: block;
+}
+
+.social img {
+  width: 22px;
+  height: 22px;
+  transition: var(--transition);
+  filter: invert(85%) brightness(100%) contrast(90%);
+}
+
+.social a:hover img {
+  filter: invert(76%) sepia(70%) saturate(478%) hue-rotate(101deg) brightness(101%) contrast(102%);
+  transform: translateY(-3px);
+}
+
+.social::after {
+  content: "";
+  width: 1px;
+  height: 90px;
+  background: var(--muted);
+  margin-top: 20px;
+}
+
+.email {
+  writing-mode: vertical-rl;
+  font-size: var(--fz-sm);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  padding: 10px;
+}
+
+.email:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.side.right::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  background: var(--muted);
+  margin-top: 20px;
+}
+
+.mobile-social {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-social {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+  }
+
+  .mobile-social img {
+    width: 24px;
+    height: 24px;
+    filter: invert(85%) brightness(100%) contrast(90%);
+    transition: var(--transition);
+  }
+
+  .mobile-social img:hover {
+    filter: invert(76%) sepia(70%) saturate(478%) hue-rotate(101deg) brightness(101%) contrast(102%);
+  }
+}

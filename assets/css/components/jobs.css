@@ -1,0 +1,155 @@
+/* EXPERIENCE / JOBS SECTION */
+
+.jobs-container {
+  display: flex;
+  min-height: 340px;
+}
+
+@media (max-width: 768px) {
+  .jobs-container {
+    display: block;
+  }
+}
+
+.tab-list {
+  position: relative;
+  z-index: 3;
+  width: max-content;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .tab-list {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.tab-list button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--tab-height);
+  padding: 0 20px 2px;
+  border: none;
+  border-left: 2px solid var(--bg-lightest);
+  background-color: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+  .tab-list button {
+    min-width: var(--tab-width);
+    border-left: 0;
+    border-bottom: 2px solid var(--bg-lightest);
+    text-align: center;
+  }
+}
+
+.tab-list button:hover {
+  background-color: var(--bg-light);
+  color: var(--accent);
+}
+
+.tab-list button.active {
+  color: var(--accent);
+}
+
+.tab-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 2px;
+  height: var(--tab-height);
+  border-radius: var(--border-radius);
+  background: var(--accent);
+  transform: translateY(0);
+  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-delay: 0.1s;
+}
+
+@media (max-width: 768px) {
+  .tab-highlight {
+    top: auto;
+    bottom: 0;
+    width: var(--tab-width);
+    height: 2px;
+    transform: translateX(0);
+  }
+}
+
+.tab-panels {
+  position: relative;
+  width: 100%;
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .tab-panels {
+    margin-left: 0;
+  }
+}
+
+.tab-panel {
+  width: 100%;
+  height: auto;
+  padding: 10px 5px;
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-panel h3 {
+  margin-bottom: 2px;
+  font-size: var(--fz-xxl);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text-light);
+}
+
+.tab-panel h3 .company {
+  color: var(--accent);
+}
+
+.tab-panel .job-range {
+  margin-bottom: 25px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+}
+
+.tab-panel ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: var(--fz-lg);
+}
+
+.tab-panel ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.tab-panel ul li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: var(--fz-xl);
+  line-height: 12px;
+}

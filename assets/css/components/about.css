@@ -1,0 +1,131 @@
+/* ABOUT SECTION */
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 50px;
+}
+
+@media (max-width: 768px) {
+  .about-inner {
+    display: block;
+  }
+}
+
+.about-text p {
+  margin-bottom: 15px;
+  color: var(--muted);
+}
+
+.about-text a {
+  color: var(--accent);
+  position: relative;
+}
+
+.about-text a:hover {
+  color: var(--accent);
+}
+
+.about-text a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.about-text a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 200px));
+  gap: 0 10px;
+  padding: 0;
+  margin: 20px 0 0 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+.skills-list li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  color: var(--muted);
+}
+
+.skills-list li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: var(--fz-sm);
+  line-height: 12px;
+}
+
+.about-image {
+  position: relative;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .about-image {
+    margin: 50px auto 0;
+    width: 70%;
+  }
+}
+
+.about-image .wrapper {
+  display: block;
+  position: relative;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background-color: var(--accent);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  transition: var(--transition);
+}
+
+.about-image .wrapper:hover {
+  transform: translate(-4px, -4px);
+}
+
+.about-image .wrapper:hover::after {
+  transform: translate(8px, 8px);
+}
+
+.about-image .wrapper::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--accent);
+  top: 14px;
+  left: 14px;
+  z-index: -1;
+  transition: var(--transition);
+}
+
+.about-image .img {
+  position: relative;
+  border-radius: var(--border-radius);
+  width: 100%;
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) contrast(1);
+  transition: var(--transition);
+}
+
+.about-image .wrapper:hover .img {
+  filter: none;
+  mix-blend-mode: normal;
+}
