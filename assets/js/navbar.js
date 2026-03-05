@@ -1,7 +1,3 @@
-// ===============================
-// Navbar Functionality
-// ===============================
-
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar();
   initMobileMenu();

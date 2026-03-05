@@ -1,7 +1,3 @@
-// ===============================
-// Featured Projects Section
-// ===============================
-
 document.addEventListener("DOMContentLoaded", initFeaturedProjects);
 
 async function initFeaturedProjects() {
@@ -41,7 +37,7 @@ function renderFeaturedProjects(projects) {
 
     // Determine image - use image field if available, otherwise construct from title
     const imageName = project.image || `${project.title.toLowerCase().replace(/\s+/g, '-')}.png`;
-    const imagePath = `assets/images/${imageName}`;
+    const imagePath = `data/${imageName}`;
 
     listItem.innerHTML = `
       <div class="featured-content">

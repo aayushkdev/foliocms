@@ -1349,25 +1349,43 @@ body.blur .section {
 
 .projects-main {
   min-height: 100vh;
-  padding: 200px 150px;
+  padding: 140px 150px;
 }
 
 @media (max-width: 1080px) {
   .projects-main {
-    padding: 200px 100px;
+    padding: 140px 100px;
   }
 }
 
 @media (max-width: 768px) {
   .projects-main {
-    padding: 150px 50px;
+    padding: 120px 50px;
   }
 }
 
 @media (max-width: 480px) {
   .projects-main {
-    padding: 125px 25px;
+    padding: 100px 25px;
   }
+}
+
+.projects-nav {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+  z-index: 100;
+}
+
+.projects-nav a {
+  display: block;
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+}
+
+.projects-nav a:hover {
+  transform: translate(-4px, -4px);
 }
 
 .projects-header {

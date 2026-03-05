@@ -1,7 +1,3 @@
-// ===============================
-// Experience / Jobs Section
-// ===============================
-
 document.addEventListener("DOMContentLoaded", loadExperience);
 
 let activeTabIndex = 0;

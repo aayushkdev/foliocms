@@ -1,7 +1,3 @@
-// ===============================
-// Hero Animation
-// ===============================
-
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
