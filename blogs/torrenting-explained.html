@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How BitTorrent Actually Works | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">How BitTorrent Actually Works</h1>
+
+        <div class="blog-meta">
+            March 2026 · 5 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/torrenting.jpg">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                BitTorrent is one of the most efficient ways to distribute large files across the internet.
+                Instead of downloading from a single server, BitTorrent allows users to download pieces of a file from
+                many peers simultaneously.
+            </p>
+
+            <h2>The Problem With Traditional Downloads</h2>
+
+            <p>
+                In a traditional HTTP download:
+            </p>
+
+            <ul>
+                <li>One server hosts the file</li>
+                <li>All users download from the same server</li>
+                <li>The server becomes a bottleneck</li>
+            </ul>
+
+            <p>
+                BitTorrent solves this by turning every downloader into an uploader.
+            </p>
+
+            <h2>How Torrents Work</h2>
+
+            <p>
+                A torrent download is broken into many small pieces.
+            </p>
+
+            <ul>
+                <li>Each peer downloads pieces from multiple users</li>
+                <li>Pieces are verified with hashes</li>
+                <li>Peers upload pieces they already have</li>
+            </ul>
+
+            <p>
+                This creates a swarm where everyone contributes bandwidth.
+            </p>
+
+            <h2>Key Components</h2>
+
+            <ul>
+                <li><strong>Tracker</strong> – coordinates peers in the swarm</li>
+                <li><strong>Peers</strong> – users downloading or uploading</li>
+                <li><strong>Seeders</strong> – peers with the full file</li>
+                <li><strong>Leechers</strong> – peers still downloading</li>
+            </ul>
+
+            <h2>Why Torrents Are So Fast</h2>
+
+            <p>
+                Because downloads happen in parallel.
+            </p>
+
+            <ul>
+                <li>Multiple peers upload pieces simultaneously</li>
+                <li>No single server bottleneck</li>
+                <li>Bandwidth scales with users</li>
+            </ul>
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                BitTorrent is one of the most elegant distributed systems ever designed.
+                It turns a scalability problem into a strength by making every user part of the infrastructure.
+            </p>
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>

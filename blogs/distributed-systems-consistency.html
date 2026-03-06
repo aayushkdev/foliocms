@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How Distributed Systems Stay Consistent | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">How Distributed Systems Stay Consistent</h1>
+
+        <div class="blog-meta">
+            March 2026 · 7 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/distributed-systems.jpg" alt="Distributed Systems">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                Modern applications rarely run on a single machine.
+                Instead, they run across clusters of servers distributed
+                around the world.
+            </p>
+
+            <p>
+                Keeping data consistent across multiple machines is one of
+                the biggest challenges in distributed systems.
+            </p>
+
+            <h2>The CAP Theorem</h2>
+
+            <p>
+                The CAP theorem states that distributed systems can only
+                guarantee two of three properties:
+            </p>
+
+            <ul>
+                <li>Consistency</li>
+                <li>Availability</li>
+                <li>Partition tolerance</li>
+            </ul>
+
+            <p>
+                Since network partitions are unavoidable, systems must choose
+                between strong consistency and availability.
+            </p>
+
+            <h2>Replication</h2>
+
+            <p>
+                Most distributed databases replicate data across multiple nodes.
+            </p>
+
+            <p>
+                Replication improves:
+            </p>
+
+            <ul>
+                <li>fault tolerance</li>
+                <li>read scalability</li>
+                <li>data durability</li>
+            </ul>
+
+            <p>
+                However, it introduces challenges when updates occur
+                simultaneously on different nodes.
+            </p>
+
+            <h2>Consensus Algorithms</h2>
+
+            <p>
+                To maintain consistency, many systems rely on consensus algorithms
+                such as:
+            </p>
+
+            <ul>
+                <li>Raft</li>
+                <li>Paxos</li>
+                <li>Viewstamped Replication</li>
+            </ul>
+
+            <p>
+                These algorithms allow distributed nodes to agree on a single
+                sequence of operations.
+            </p>
+
+            <h2>Leader-Based Replication</h2>
+
+            <p>
+                A common pattern is leader-follower replication.
+            </p>
+
+            <p>
+                The leader node receives all writes and replicates them to
+                followers.
+            </p>
+
+            <p>
+                If the leader fails, a new leader is elected.
+            </p>
+
+            <h2>Eventual Consistency</h2>
+
+            <p>
+                Some systems relax strict consistency guarantees.
+            </p>
+
+            <p>
+                Instead, they allow temporary inconsistencies while ensuring
+                that all replicas eventually converge to the same state.
+            </p>
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                Distributed systems trade simplicity for scalability and
+                fault tolerance.
+            </p>
+
+            <p>
+                Understanding consistency models and consensus mechanisms is
+                essential for designing reliable large-scale infrastructure.
+            </p>
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>

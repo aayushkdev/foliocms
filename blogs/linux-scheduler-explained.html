@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How the Linux Scheduler Works | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">How the Linux Scheduler Works</h1>
+
+        <div class="blog-meta">
+            March 2026 · 6 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/linux-scheduler.jpg" alt="Linux Scheduler">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                Modern operating systems constantly manage dozens or even thousands of
+                processes competing for CPU time.
+            </p>
+
+            <p>
+                The component responsible for deciding which process runs next is
+                the scheduler.
+            </p>
+
+            <h2>Why Scheduling Exists</h2>
+
+            <p>
+                CPUs can only execute one thread per core at a time.
+                However, many programs may be ready to run simultaneously.
+            </p>
+
+            <p>
+                The scheduler ensures:
+            </p>
+
+            <ul>
+                <li>Fair CPU usage</li>
+                <li>Responsive systems</li>
+                <li>Efficient resource utilization</li>
+            </ul>
+
+            <h2>The Completely Fair Scheduler (CFS)</h2>
+
+            <p>
+                Linux uses the <strong>Completely Fair Scheduler</strong>.
+            </p>
+
+            <p>
+                Instead of using simple queues, CFS attempts to divide CPU time
+                fairly between processes.
+            </p>
+
+            <p>
+                Each process gets a virtual runtime value representing how much CPU
+                time it has consumed.
+            </p>
+
+            <p>
+                The scheduler always selects the process with the lowest runtime.
+            </p>
+
+            <h2>Scheduling Data Structures</h2>
+
+            <p>
+                Processes are stored in a structure called a
+                <strong>red-black tree</strong>.
+            </p>
+
+            <p>
+                This balanced tree allows the scheduler to efficiently find
+                the process that should run next.
+            </p>
+
+            <h2>Context Switching</h2>
+
+            <p>
+                When the scheduler chooses a new process, the CPU performs
+                a context switch.
+            </p>
+
+            <p>
+                This involves saving the current process state:
+            </p>
+
+            <ul>
+                <li>Registers</li>
+                <li>Program counter</li>
+                <li>Stack pointer</li>
+            </ul>
+
+            <p>
+                Then restoring the state of the next process.
+            </p>
+
+            <h2>Multicore Scheduling</h2>
+
+            <p>
+                On multicore systems, each CPU core maintains its own run queue.
+            </p>
+
+            <p>
+                The kernel periodically balances load between cores
+                to prevent uneven CPU usage.
+            </p>
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                The Linux scheduler is a sophisticated component responsible
+                for keeping systems responsive and efficient.
+            </p>
+
+            <p>
+                Without it, multitasking systems would quickly become chaotic
+                and unfair.
+            </p>
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>

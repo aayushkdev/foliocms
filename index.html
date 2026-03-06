@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components/blog.css">
 </head>
 
 <body>
@@ -253,36 +254,8 @@
             I Also Write
         </h2>
 
-        <div class="blog-grid">
-
-            <article class="blog-card">
-                <h3>
-                    <a href="blog/docker-internals.html">
-                        Understanding Docker Internals
-                    </a>
-                </h3>
-
-                <p>
-                    A deep dive into namespaces, cgroups, and how containers actually work.
-                </p>
-
-                <span class="blog-date">March 2026</span>
-            </article>
-
-            <article class="blog-card">
-                <h3>
-                    <a href="blog/kubernetes-networking.html">
-                        Kubernetes Networking Explained
-                    </a>
-                </h3>
-
-                <p>
-                    Breaking down services, pods, and cluster networking in Kubernetes.
-                </p>
-
-                <span class="blog-date">February 2026</span>
-            </article>
-
+        <div class="blog-grid" id="homeBlogGrid">
+            <!-- Blogs loaded dynamically -->
         </div>
 
         <div class="blog-more">

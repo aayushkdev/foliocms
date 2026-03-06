@@ -1,23 +1,51 @@
 [
   {
-    "id": 1,
-    "title": "Understanding Rootless Containers",
-    "date": "2026-02-10",
-    "summary": "A practical overview of how rootless containers work using Linux namespaces and user mappings.",
-    "content": "Rootless containers allow processes to run with container-like isolation without requiring root privileges. This improves security while maintaining flexibility..."
+    "title": "Containers Simplified",
+    "description": "Understanding namespaces, cgroups, and how containers actually work under the hood.",
+    "date": "March 2026",
+    "image": "/data/blog/containers.jpg",
+    "link": "/blogs/containers-simplified.html"
   },
   {
-    "id": 2,
-    "title": "Building a Container Runtime from Scratch",
-    "date": "2026-01-22",
-    "summary": "Exploring namespaces, pivot_root, and minimal filesystem setup while building Crate.",
-    "content": "Container runtimes rely heavily on Linux kernel primitives such as PID namespaces, mount namespaces, and execve..."
+    "title": "How BitTorrent Actually Works",
+    "description": "Breaking down trackers, peers, seeders, and how torrent swarms distribute files efficiently.",
+    "date": "March 2026",
+    "image": "/data/blog/torrenting.jpg",
+    "link": "/blogs/torrenting-explained.html"
   },
   {
-    "id": 3,
-    "title": "Designing CLI Tools That Feel Fast",
-    "date": "2025-12-18",
-    "summary": "Principles behind building responsive and intuitive terminal applications.",
-    "content": "Performance perception matters more than raw speed. Instant feedback, clean output formatting, and predictable commands improve UX significantly..."
+    "title": "Threads, CPU Cores, and Goroutines Explained",
+    "description": "Understanding concurrency: how threads map to cores and how Go's goroutines make concurrency easier.",
+    "date": "March 2026",
+    "image": "/data/blog/concurrency.jpg",
+    "link": "/blogs/threads-goroutines.html"
+  },
+  {
+    "title": "Why Everything in Linux Is a File",
+    "description": "Exploring the Unix philosophy that turns devices, processes, and system data into files.",
+    "date": "March 2026",
+    "image": "/data/blog/linux-files.jpg",
+    "link": "/blogs/everything-is-a-file.html"
+  },
+  {
+    "title": "What Actually Happens When You Open a Website",
+    "description": "DNS resolution, TCP handshake, TLS negotiation, and HTTP requests explained step by step.",
+    "date": "March 2026",
+    "image": "/data/blog/web-request.jpg",
+    "link": "/blogs/what-happens-when-you-open-a-website.html"
+  },
+  {
+    "title": "How the Linux Scheduler Works",
+    "description": "Understanding how the kernel decides which process gets CPU time and how fairness is maintained.",
+    "date": "March 2026",
+    "image": "/data/blog/linux-scheduler.jpg",
+    "link": "/blogs/linux-scheduler-explained.html"
+  },
+  {
+    "title": "How Distributed Systems Stay Consistent",
+    "description": "Understanding CAP theorem, replication strategies, and consensus algorithms in distributed systems.",
+    "date": "March 2026",
+    "image": "/data/blog/distributed-systems.jpg",
+    "link": "/blogs/distributed-systems-consistency.html"
   }
 ]

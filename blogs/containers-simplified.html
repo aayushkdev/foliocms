@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Containers Simplified | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">Containers Simplified</h1>
+
+        <div class="blog-meta">
+            March 2026 · 6 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/containers.jpg" alt="Containers">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                Containers power almost everything in modern cloud infrastructure.
+                Docker, Kubernetes, and serverless platforms all rely on them.
+                But despite how common containers are, many developers still don't
+                fully understand what they actually are.
+            </p>
+
+            <p>
+                This post explains containers from first principles and how they
+                work internally.
+            </p>
+
+
+            <h2>What is a Container?</h2>
+
+            <p>
+                A container is simply a process running on your system with
+                <strong>isolated resources</strong>.
+            </p>
+
+            <p>
+                Unlike virtual machines, containers do not emulate hardware or run
+                their own kernel. They share the host operating system but operate
+                in a restricted environment.
+            </p>
+
+            <p>
+                This isolation is achieved through two key Linux features:
+            </p>
+
+            <ul>
+                <li>Namespaces</li>
+                <li>Control Groups (cgroups)</li>
+            </ul>
+
+
+            <h2>Namespaces: Process Isolation</h2>
+
+            <p>
+                Namespaces allow a process to see a different version of system
+                resources such as processes, filesystems, and networks.
+            </p>
+
+            <p>
+                For example, inside a container, a process may think it is running
+                as PID 1 even though the host system has thousands of processes.
+            </p>
+
+            <p>
+                Linux provides several namespace types:
+            </p>
+
+            <ul>
+                <li><code>pid</code> – process isolation</li>
+                <li><code>net</code> – network interfaces</li>
+                <li><code>mnt</code> – filesystem mounts</li>
+                <li><code>uts</code> – hostname isolation</li>
+                <li><code>ipc</code> – inter-process communication</li>
+            </ul>
+
+
+            <h2>Cgroups: Resource Limits</h2>
+
+            <p>
+                While namespaces isolate resources, cgroups control how much of
+                those resources a container can use.
+            </p>
+
+            <p>
+                They allow the system to enforce limits like:
+            </p>
+
+            <ul>
+                <li>CPU usage</li>
+                <li>memory usage</li>
+                <li>disk IO</li>
+            </ul>
+
+            <p>
+                This prevents a container from consuming all system resources.
+            </p>
+
+
+            <h2>How Docker Actually Works</h2>
+
+            <p>
+                Docker is essentially a tool that orchestrates these kernel
+                features.
+            </p>
+
+            <p>
+                When you run:
+            </p>
+
+            <pre><code>docker run nginx</code></pre>
+
+            <p>
+                Docker performs several steps:
+            </p>
+
+            <ul>
+                <li>Creates a new filesystem layer</li>
+                <li>Starts a process in isolated namespaces</li>
+                <li>Applies resource limits using cgroups</li>
+                <li>Connects networking</li>
+            </ul>
+
+            <p>
+                At the end of the day, a container is still just a normal process
+                running on your machine.
+            </p>
+
+
+            <h2>Containers vs Virtual Machines</h2>
+
+            <p>
+                The biggest difference is the kernel.
+            </p>
+
+            <p>
+                Virtual machines run a full guest OS and kernel, while containers
+                share the host kernel.
+            </p>
+
+            <p>
+                This makes containers:
+            </p>
+
+            <ul>
+                <li>lighter</li>
+                <li>faster to start</li>
+                <li>more efficient</li>
+            </ul>
+
+
+            <h2>Why I Built My Own Container Runtime</h2>
+
+            <p>
+                While working on my project <strong>Crate</strong>, I wanted to
+                understand containers beyond Docker abstractions.
+            </p>
+
+            <p>
+                Building a runtime from scratch helped me learn how namespaces,
+                filesystem isolation, and process control actually interact inside
+                the Linux kernel.
+            </p>
+
+            <p>
+                It also made me appreciate how much complexity Docker hides from
+                developers.
+            </p>
+
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                Containers are often treated as a magical technology, but under the
+                hood they are simply Linux processes with isolation features.
+            </p>
+
+            <p>
+                Understanding how they work makes it easier to debug production
+                systems, design better infrastructure, and appreciate the tools we
+                use every day.
+            </p>
+
+            <p>
+                The next time you run <code>docker run</code>, remember that you're
+                not launching a virtual machine — you're just starting a very well
+                isolated process.
+            </p>
+
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>

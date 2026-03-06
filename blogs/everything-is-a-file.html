@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Why Everything in Linux Is a File | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">Why Everything in Linux Is a File</h1>
+
+        <div class="blog-meta">
+            March 2026 · 4 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/linux-files.jpg">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                One of the core philosophies of Unix and Linux is simple:
+            </p>
+
+            <p>
+                <strong>Everything is a file.</strong>
+            </p>
+
+            <p>
+                This design makes the system incredibly flexible and composable.
+            </p>
+
+            <h2>What Does It Actually Mean?</h2>
+
+            <p>
+                In Linux, many system resources are exposed as files.
+            </p>
+
+            <ul>
+                <li>Hardware devices</li>
+                <li>Processes</li>
+                <li>system information</li>
+                <li>network interfaces</li>
+            </ul>
+
+            <h2>Examples</h2>
+
+            <p>
+                Devices appear in the <code>/dev</code> directory.
+            </p>
+
+            <ul>
+                <li><code>/dev/sda</code> – hard drive</li>
+                <li><code>/dev/null</code> – discard data</li>
+                <li><code>/dev/random</code> – random number generator</li>
+            </ul>
+
+            <p>
+                Process information lives in <code>/proc</code>.
+            </p>
+
+            <ul>
+                <li><code>/proc/cpuinfo</code></li>
+                <li><code>/proc/meminfo</code></li>
+            </ul>
+
+            <h2>Why This Design Is Powerful</h2>
+
+            <p>
+                Because it allows tools to interact with system components using the same interface: files.
+            </p>
+
+            <ul>
+                <li>Read system state with <code>cat</code></li>
+                <li>Write configuration with <code>echo</code></li>
+                <li>Pipe outputs between tools</li>
+            </ul>
+
+            <h2>Example</h2>
+
+            <pre><code>cat /proc/cpuinfo</code></pre>
+
+            <p>
+                This command simply reads a file — but the kernel dynamically generates the contents.
+            </p>
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                The "everything is a file" philosophy keeps Linux simple, powerful, and composable.
+                It's one of the reasons Unix-like systems have remained dominant in servers and infrastructure.
+            </p>
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>

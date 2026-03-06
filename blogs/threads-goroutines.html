@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Threads, Cores, and Goroutines Explained | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">Threads, Cores, and Goroutines Explained</h1>
+
+        <div class="blog-meta">
+            March 2026 · 6 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/concurrency.jpg">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                Modern programs rely heavily on concurrency to fully utilize modern CPUs.
+                Understanding threads, cores, and goroutines is essential for writing efficient software.
+            </p>
+
+            <h2>CPU Cores</h2>
+
+            <p>
+                A CPU core is a physical execution unit inside a processor.
+            </p>
+
+            <ul>
+                <li>Each core can execute instructions independently</li>
+                <li>Modern CPUs often have 4–16 cores</li>
+                <li>Parallel programs can use multiple cores simultaneously</li>
+            </ul>
+
+            <h2>Threads</h2>
+
+            <p>
+                Threads are lightweight units of execution within a process.
+            </p>
+
+            <ul>
+                <li>Managed by the operating system</li>
+                <li>Multiple threads share the same memory</li>
+                <li>Context switching between threads has overhead</li>
+            </ul>
+
+            <h2>Goroutines</h2>
+
+            <p>
+                Go introduces goroutines — extremely lightweight threads managed by the Go runtime.
+            </p>
+
+            <ul>
+                <li>Thousands of goroutines can run concurrently</li>
+                <li>Scheduled by the Go runtime instead of the OS</li>
+                <li>Very small memory footprint (~2 KB stack)</li>
+            </ul>
+
+            <h2>How Go Uses CPU Cores</h2>
+
+            <p>
+                The Go scheduler maps goroutines to OS threads which run on CPU cores.
+            </p>
+
+            <pre><code>Goroutines → Go Scheduler → OS Threads → CPU Cores</code></pre>
+
+            <h2>Why Goroutines Are Powerful</h2>
+
+            <ul>
+                <li>Extremely lightweight</li>
+                <li>Easy concurrency with channels</li>
+                <li>Efficient scheduling</li>
+            </ul>
+
+            <p>
+                This design allows Go programs to handle massive concurrency with minimal complexity.
+            </p>
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>

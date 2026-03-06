@@ -1,66 +1,50 @@
 const grid = document.querySelector("#blogGrid");
 
-const blogs = [
-  {
-    title: "Building My Portfolio from Scratch",
-    description: "How I designed and developed my personal portfolio using vanilla HTML, CSS, and JavaScript.",
-    date: "Jan 12 2026",
-    link: "#"
-  },
-  {
-    title: "Understanding CSS Variables",
-    description: "A quick guide on how CSS variables work and how they simplify theming systems.",
-    date: "Feb 02 2026",
-    link: "#"
-  },
-  {
-    title: "JavaScript Project Architecture",
-    description: "How I structure front-end projects to keep them scalable and maintainable.",
-    date: "Feb 18 2026",
-    link: "#"
-  },
-  {
-    title: "Designing Dark Mode Interfaces",
-    description: "Things to consider when designing dark UI themes for better accessibility.",
-    date: "Mar 01 2026",
-    link: "#"
-  },
-  {
-    title: "My Favorite Developer Tools",
-    description: "A collection of tools that improved my productivity as a developer.",
-    date: "Mar 05 2026",
-    link: "#"
+async function loadBlogs() {
+  try {
+
+    const res = await fetch("/data/blogs.json");
+    const blogs = await res.json();
+
+    blogs.forEach((blog) => {
+
+      const card = document.createElement("a");
+      card.className = "blog-card";
+      card.href = blog.link;
+
+      card.innerHTML = `
+        <div class="blog-image">
+          <img src="${blog.image}" alt="${blog.title}">
+        </div>
+
+        <div class="blog-content">
+
+          <span class="blog-date">
+            ${blog.date}
+          </span>
+
+          <h2 class="blog-title">
+            ${blog.title}
+          </h2>
+
+          <p class="blog-description">
+            ${blog.description}
+          </p>
+
+          <span class="blog-readmore">
+            Read more →
+          </span>
+
+        </div>
+      `;
+
+      grid.appendChild(card);
+
+    });
+
+  } catch (err) {
+    console.error("Failed to load blogs:", err);
   }
-];
-
-function renderBlogs() {
-
-  blogs.forEach(blog => {
-
-    const card = `
-    <article class="blog-card">
-
-      <h3>
-        <a href="${blog.link}">
-          ${blog.title}
-        </a>
-      </h3>
-
-      <p>
-        ${blog.description}
-      </p>
-
-      <span class="blog-date">
-        ${blog.date}
-      </span>
-
-    </article>
-    `;
-
-    grid.innerHTML += card;
-
-  });
-
 }
 
-renderBlogs();
+loadBlogs();

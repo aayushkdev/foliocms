@@ -4,6 +4,7 @@ function init() {
   animateHero();
   setupSmoothScroll();
   setupScrollReveal();
+  loadHomeBlogs();
 }
 
 function animateHero() {
@@ -76,5 +77,60 @@ async function fetchData(filename) {
   } catch (error) {
     console.error(`Failed to fetch ${filename}:`, error);
     return [];
+  }
+}
+
+
+// ===============================
+// Load Latest Blogs for Homepage
+// ===============================
+
+async function loadHomeBlogs() {
+  const grid = document.querySelector("#homeBlogGrid");
+  if (!grid) return;
+
+  try {
+    const res = await fetch("/data/blogs.json");
+    const blogs = await res.json();
+
+    // Show only first 2 blogs on homepage
+    const latestBlogs = blogs.slice(0, 2);
+
+    latestBlogs.forEach((blog) => {
+      const card = document.createElement("a");
+      card.className = "blog-card";
+      card.href = blog.link;
+
+      card.innerHTML = `
+        <div class="blog-image">
+          <img src="${blog.image}" alt="${blog.title}">
+        </div>
+
+        <div class="blog-content">
+
+          <span class="blog-date">
+            ${blog.date}
+          </span>
+
+          <h2 class="blog-title">
+            ${blog.title}
+          </h2>
+
+          <p class="blog-description">
+            ${blog.description}
+          </p>
+
+          <span class="blog-readmore">
+            Read more →
+          </span>
+
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error("Failed to load blogs:", err);
   }
 }

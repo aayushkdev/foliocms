@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What Actually Happens When You Open a Website | Aayush Kumar</title>
+
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components/blog.css">
+</head>
+
+
+<body>
+
+    <header class="projects-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/" aria-label="home">
+
+                    <div class="hex-container">
+                        <svg id="hex" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Hexagon</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23"
+                                        fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="logo-container">
+                        <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
+                            <title>Logo</title>
+                            <g transform="translate(-8,-2)">
+                                <g transform="translate(11,5)">
+                                    <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                                        stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none" />
+                                    <path d="M49.5 61 L44.2 61 L41.8 53 L34.2 53 L31.8 61 L26.5 61 L35 30.3 L41 30.3 L49.5 61 Z 
+                 M40.6 48.5 L38 38.2 L35.4 48.5 L40.6 48.5 Z" fill="currentColor" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </a>
+            </div>
+    </header>
+
+
+    <main class="blog-container">
+
+        <h1 class="blog-title">What Actually Happens When You Open a Website</h1>
+
+        <div class="blog-meta">
+            March 2026 · 7 min read
+        </div>
+
+        <div class="blog-hero">
+            <img src="/data/blog/web-request.jpg" alt="Opening a Website">
+        </div>
+
+        <div class="blog-content">
+
+            <p>
+                When you type a website like <code>example.com</code> into your browser and press enter,
+                a surprising number of systems work together before the page appears.
+            </p>
+
+            <p>
+                From DNS lookups to encrypted connections and HTTP requests, a single
+                page load involves multiple network protocols and infrastructure layers.
+            </p>
+
+            <h2>Step 1: DNS Resolution</h2>
+
+            <p>
+                The browser first needs to know the server’s IP address.
+                Domain names are human-friendly labels, but computers communicate
+                using IP addresses.
+            </p>
+
+            <p>
+                Your system queries a DNS resolver which may contact several servers:
+            </p>
+
+            <ul>
+                <li>Root DNS servers</li>
+                <li>TLD servers (.com, .org)</li>
+                <li>The authoritative server for the domain</li>
+            </ul>
+
+            <p>
+                Eventually the resolver returns something like:
+            </p>
+
+            <pre><code>example.com → 93.184.216.34</code></pre>
+
+            <h2>Step 2: TCP Handshake</h2>
+
+            <p>
+                Before sending HTTP data, the browser must establish a reliable connection.
+                TCP performs a three-way handshake:
+            </p>
+
+            <pre><code>SYN → 
+SYN-ACK ←
+ACK →</code></pre>
+
+            <p>
+                After this exchange, both sides agree to start communication.
+            </p>
+
+            <h2>Step 3: TLS Encryption</h2>
+
+            <p>
+                If the site uses HTTPS (which most modern websites do),
+                the browser negotiates a TLS session.
+            </p>
+
+            <p>
+                This process:
+            </p>
+
+            <ul>
+                <li>Verifies the server certificate</li>
+                <li>Negotiates encryption algorithms</li>
+                <li>Generates session keys</li>
+            </ul>
+
+            <p>
+                Once complete, communication becomes encrypted.
+            </p>
+
+            <h2>Step 4: HTTP Request</h2>
+
+            <p>
+                The browser finally sends the actual request:
+            </p>
+
+            <pre><code>GET / HTTP/1.1
+Host: example.com
+User-Agent: browser</code></pre>
+
+            <p>
+                The server processes the request and returns a response containing
+                HTML, headers, and possibly cookies.
+            </p>
+
+            <h2>Step 5: Rendering the Page</h2>
+
+            <p>
+                Once the browser receives the HTML, it begins rendering:
+            </p>
+
+            <ul>
+                <li>HTML is parsed into a DOM</li>
+                <li>CSS is applied</li>
+                <li>JavaScript executes</li>
+                <li>Additional resources load</li>
+            </ul>
+
+            <p>
+                Only after all these steps do you actually see the page.
+            </p>
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                Opening a simple webpage involves DNS infrastructure, TCP networking,
+                encryption protocols, HTTP servers, and browser rendering engines.
+            </p>
+
+            <p>
+                Understanding these layers helps explain why performance, latency,
+                and caching are so important on the modern web.
+            </p>
+
+        </div>
+
+        <a href="/blogs.html" class="blog-back">
+            ← Back to blog
+        </a>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>Built by Aayush Kumar</p>
+    </footer>
+
+</body>
+
+</html>
