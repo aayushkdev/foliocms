@@ -1,6 +1,20 @@
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "admin123";
 const ADMIN_TYPES = ["projects", "blogs"];
+const BASE_THEME_TOKENS = {
+  dark: {
+    bg: "#0a192f",
+    text: "#ccd6f6",
+    border: "#233554",
+    accent: "#64ffda",
+  },
+  light: {
+    bg: "#eef3fb",
+    text: "#10233f",
+    border: "#c9d8ea",
+    accent: "#0c756f",
+  },
+};
 const THEME_PRESETS = {
   dark: {
     label: "Dark",
@@ -981,6 +995,20 @@ function sanitizeColor(value, fallback) {
   return /^#[0-9A-Fa-f]{6}$/.test(color) ? color : fallback;
 }
 
+function getThemePreviewTokens(themeKey) {
+  if (themeKey === "light") return BASE_THEME_TOKENS.light;
+  if (themeKey === "dark") return BASE_THEME_TOKENS.dark;
+
+  const preset = THEME_PRESETS[themeKey];
+  const vars = preset?.vars || {};
+  return {
+    bg: vars["--bg"] || BASE_THEME_TOKENS.dark.bg,
+    text: vars["--text"] || BASE_THEME_TOKENS.dark.text,
+    border: vars["--border"] || BASE_THEME_TOKENS.dark.border,
+    accent: vars["--accent"] || BASE_THEME_TOKENS.dark.accent,
+  };
+}
+
 function renderAnalyticsView() {
   const metrics = computeMetrics();
   const total = metrics.totalProjects + metrics.totalBlogs;
@@ -1088,13 +1116,15 @@ function renderThemesView() {
         ${themeKeys
           .map((key) => {
             const theme = THEME_PRESETS[key];
+            const tokens = getThemePreviewTokens(key);
             const activeClass = currentTheme === key ? "admin-btn--primary" : "";
             return `
               <button
-                class="admin-btn ${activeClass}"
+                class="admin-btn admin-theme-btn ${activeClass}"
                 type="button"
                 data-action="set-theme"
                 data-theme="${key}"
+                style="--theme-bg:${tokens.bg};--theme-text:${tokens.text};--theme-border:${tokens.border};--theme-accent:${tokens.accent};"
               >${escapeHtml(theme.label)}</button>
             `;
           })
