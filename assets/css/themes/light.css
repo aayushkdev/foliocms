@@ -1,14 +1,14 @@
 [data-theme="light"] {
-  --bg: #f8fafc;
-  --bg-light: #ffffff;
-  --bg-lightest: #e2e8f0;
+  --bg: #eef3fb;
+  --bg-light: #f8fbff;
+  --bg-lightest: #e3ebf7;
   
-  --text: #0f172a;
-  --text-light: #334155;
-  --muted: #64748b;
-  --accent: #4f46e5;
+  --text: #10233f;
+  --text-light: #314866;
+  --muted: #5a6f8f;
+  --accent: #0c756f;
 
-  --border: #cbd5e1;
+  --border: #c9d8ea;
   
   color-scheme: light;
 }

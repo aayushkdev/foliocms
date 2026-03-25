@@ -2,6 +2,9 @@
 
 @import 'layout.css';
 
+@import 'themes/dark.css';
+@import 'themes/light.css';
+
 @import 'components/navbar.css';
 @import 'components/hero.css';
 @import 'components/about.css';
