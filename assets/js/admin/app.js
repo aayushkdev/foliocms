@@ -405,13 +405,13 @@ function ensureValidHash() {
   const route = parseRoute();
 
   if (!route.valid) {
-    navigate(appState.isAuthenticated ? "/dashboard" : "/login");
+    navigate("/dashboard");
     return;
   }
 
   if (!appState.isAuthenticated && route.name !== "login") {
-    navigate("/login");
-    return;
+    appState.isAuthenticated = true;
+    appState.loginError = "";
   }
 
   if (appState.isAuthenticated && route.name === "login") {
