@@ -264,7 +264,8 @@ function handleClickEvents(event) {
     appState.flashMessage = "";
     appState.loginError = "";
     appState.formError = "";
-    navigate("/login");
+    // Redirect to main site root and keep theme persisted via localStorage
+    window.location.href = "/";
     return;
   }
 
@@ -1147,9 +1148,7 @@ function renderThemesView() {
         <label>Muted<input type="color" name="muted" value="${escapeHtmlAttr(custom.muted)}"></label>
         <label>Accent<input type="color" name="accent" value="${escapeHtmlAttr(custom.accent)}"></label>
         <label>Border<input type="color" name="border" value="${escapeHtmlAttr(custom.border)}"></label>
-        <div class="admin-actions">
-          <button type="submit" class="admin-btn admin-btn--primary">Apply Custom Theme</button>
-        </div>
+        
       </form>
     </section>
   `;
