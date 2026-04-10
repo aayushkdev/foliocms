@@ -64,7 +64,7 @@ const THEME_PRESETS = {
       "--text": "#cdd6f4",
       "--text-light": "#bac2de",
       "--muted": "#a6adc8",
-      "--accent": "#f5c2e7",
+      "--accent": "#89b4fa",
       "--border": "#585b70",
     },
   },
@@ -160,7 +160,78 @@ async function initializeData() {
   appState.nextProjectId = getNextId(appState.projects);
   appState.nextBlogId = getNextId(appState.blogs);
 
-  applyTheme("dark");
+  // Load persisted theme from localStorage if available, otherwise default to dark
+  loadPersistedTheme();
+}
+
+function applyCustomThemeFromObject(custom) {
+  if (!custom || typeof custom !== 'object') return;
+
+  appState.customTheme = {
+    background: custom.background || appState.customTheme.background,
+    surface: custom.surface || appState.customTheme.surface,
+    surfaceAlt: custom.surfaceAlt || appState.customTheme.surfaceAlt,
+    text: custom.text || appState.customTheme.text,
+    textLight: custom.textLight || appState.customTheme.textLight,
+    muted: custom.muted || appState.customTheme.muted,
+    accent: custom.accent || appState.customTheme.accent,
+    border: custom.border || appState.customTheme.border,
+  };
+
+  clearInlineThemeVars();
+  document.documentElement.dataset.theme = 'dark';
+  if (appState.customTheme.background) document.documentElement.style.setProperty('--bg', appState.customTheme.background);
+  if (appState.customTheme.surface) document.documentElement.style.setProperty('--bg-light', appState.customTheme.surface);
+  if (appState.customTheme.surfaceAlt) document.documentElement.style.setProperty('--bg-lightest', appState.customTheme.surfaceAlt);
+  if (appState.customTheme.text) document.documentElement.style.setProperty('--text', appState.customTheme.text);
+  if (appState.customTheme.textLight) document.documentElement.style.setProperty('--text-light', appState.customTheme.textLight);
+  if (appState.customTheme.muted) document.documentElement.style.setProperty('--muted', appState.customTheme.muted);
+  if (appState.customTheme.accent) document.documentElement.style.setProperty('--accent', appState.customTheme.accent);
+  if (appState.customTheme.border) document.documentElement.style.setProperty('--border', appState.customTheme.border);
+
+  appState.activeTheme = 'custom';
+}
+
+function loadPersistedTheme() {
+  try {
+    const key = (localStorage.getItem('theme') || '').toLowerCase();
+
+    if (key === 'custom') {
+      const raw = localStorage.getItem('customTheme');
+      if (raw) {
+        try {
+          const custom = JSON.parse(raw);
+          applyCustomThemeFromObject(custom);
+          return;
+        } catch (e) {}
+      }
+      // fallback to dark if custom not parseable
+      applyTheme('dark');
+      return;
+    }
+
+    if (key && THEME_PRESETS[key]) {
+      applyTheme(key);
+      // apply any stored themeVars overrides (preset vars)
+      const varsRaw = localStorage.getItem('themeVars');
+      if (varsRaw) {
+        try {
+          const vars = JSON.parse(varsRaw);
+          if (vars && typeof vars === 'object') {
+            Object.entries(vars).forEach(([k, v]) => {
+              try { document.documentElement.style.setProperty(k, v); } catch (e) {}
+            });
+          }
+        } catch (e) {}
+      }
+      return;
+    }
+
+    // default
+    applyTheme('dark');
+  } catch (e) {
+    applyTheme('dark');
+  }
 }
 
 async function loadProjects() {
@@ -950,6 +1021,35 @@ function applyTheme(themeKey) {
   appState.activeTheme = key;
   appState.flashMessage = `Theme changed to ${preset.label}.`;
   renderApp();
+  // persist selection for main site: store the chosen preset key and any CSS var overrides
+  try {
+    persistThemeChoice(key, preset.vars || null);
+  } catch (e) {}
+}
+
+// Persist theme choice so main site can read it
+function persistThemeChoice(themeKey, vars) {
+  try {
+    const key = String(themeKey || "dark").toLowerCase();
+    localStorage.setItem("theme", key);
+
+    if (key === "custom") {
+      // custom theme should already be set via customTheme key
+      return;
+    }
+
+    if (vars && typeof vars === "object") {
+      // store raw CSS var map so main site can apply the same overrides
+      localStorage.setItem("themeVars", JSON.stringify(vars));
+    } else {
+      localStorage.removeItem("themeVars");
+    }
+
+    // remove any legacy customTheme key when selecting a preset
+    localStorage.removeItem("customTheme");
+  } catch (e) {
+    // ignore storage errors
+  }
 }
 
 function applyCustomTheme(form) {
@@ -982,6 +1082,10 @@ function applyCustomTheme(form) {
   appState.activeTheme = "custom";
   appState.flashMessage = "Theme changed to custom.";
   renderApp();
+  try {
+    localStorage.setItem("customTheme", JSON.stringify(custom));
+    persistThemeChoice("custom");
+  } catch (e) {}
 }
 
 function clearInlineThemeVars() {

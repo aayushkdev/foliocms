@@ -24,7 +24,7 @@
     "title": "PastezBin",
     "category": "Web & Applications",
     "description": "A browser-based paste tool that compresses text and images directly into URLs using Deflate and base64 encoding.",
-    "githubLink": "https://github.com/aayushkdev/pastezbin",
+    "githubLink": "https://github.com/aayushkdev/pastez",
     "demoLink": "https://pastez.aayushk.dev",
     "tech": ["HTML", "CSS/JS", "DEFLATE"],
     "image": "pastez.png"

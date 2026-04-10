@@ -9,6 +9,8 @@
   --accent: #0c756f;
 
   --border: #c9d8ea;
+  --nav-bg: color-mix(in srgb, var(--bg) 90%, transparent);
+  --nav-scroll-shadow: 0 10px 30px -10px color-mix(in srgb, var(--bg) 70%, rgba(2,12,27,0.12));
   
   color-scheme: light;
 }

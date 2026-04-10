@@ -5,7 +5,7 @@
   top: 0;
   width: 100%;
   height: var(--nav-height);
-  background: rgba(10, 25, 47, 0.85);
+  background-color: var(--nav-bg, rgba(10, 25, 47, 0.85));
   backdrop-filter: blur(10px);
   z-index: 100;
   transition: var(--transition);
@@ -26,7 +26,7 @@
 
 .navbar.scrolled {
   height: var(--nav-scroll-height);
-  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+  box-shadow: var(--nav-scroll-shadow, 0 10px 30px -10px rgba(2, 12, 27, 0.7));
 }
 
 .nav-content {

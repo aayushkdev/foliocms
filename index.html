@@ -9,7 +9,51 @@
 
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
-    <link rel="stylesheet" href="assets/css/fonts.css">
+        <script>
+            (function(){
+                try {
+                    var theme = localStorage.getItem('theme');
+                    var varsRaw = localStorage.getItem('themeVars') || localStorage.getItem('customTheme');
+                    if (varsRaw) {
+                        try {
+                            var vars = JSON.parse(varsRaw);
+                            // If vars are CSS variable map (keys like --bg), apply directly
+                            Object.keys(vars).forEach(function(k){
+                                try { document.documentElement.style.setProperty(k, vars[k]); } catch(e){}
+                            });
+                            // ensure dataset reflects light/dark baseline
+                            if (String(theme || '').toLowerCase() === 'light') document.documentElement.dataset.theme = 'light';
+                            else document.documentElement.dataset.theme = 'dark';
+                            return;
+                        } catch (e) {
+                            // fallthrough to legacy customTheme shape handling
+                        }
+                    }
+
+                    if (theme === 'custom') {
+                        var raw = localStorage.getItem('customTheme');
+                        if (raw) {
+                            var custom = JSON.parse(raw);
+                            document.documentElement.dataset.theme = 'dark';
+                            if (custom) {
+                                if (custom.background) document.documentElement.style.setProperty('--bg', custom.background);
+                                if (custom.surface) document.documentElement.style.setProperty('--bg-light', custom.surface);
+                                if (custom.surfaceAlt) document.documentElement.style.setProperty('--bg-lightest', custom.surfaceAlt);
+                                if (custom.text) document.documentElement.style.setProperty('--text', custom.text);
+                                if (custom.textLight) document.documentElement.style.setProperty('--text-light', custom.textLight);
+                                if (custom.muted) document.documentElement.style.setProperty('--muted', custom.muted);
+                                if (custom.accent) document.documentElement.style.setProperty('--accent', custom.accent);
+                                if (custom.border) document.documentElement.style.setProperty('--border', custom.border);
+                            }
+                        }
+                    } else if (theme === 'light' || theme === 'dark') {
+                        document.documentElement.dataset.theme = theme;
+                    }
+                } catch (e) {}
+            })();
+        </script>
+
+        <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components/blog.css">
 </head>
